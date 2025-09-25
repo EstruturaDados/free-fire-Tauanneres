@@ -1,123 +1,68 @@
-# 🔫🎒 Desafio Código da Ilha – Edição Free Fire
+Projeto Final – Jogo de Estratégia War em C
 
-Bem-vindo ao **Desafio Código da Ilha – Edição Free Fire!**  
-Neste desafio, você irá simular o gerenciamento de um **inventário de sobrevivência** em uma ilha misteriosa, utilizando a linguagem **C**.
+Disciplina: Estrutura de Dados
+Aluno: Tauan Neres
 
-A empresa **MateCheck** encarregou você de desenvolver o sistema de **mochila virtual** que ajudará os sobreviventes a se prepararem para escapar da ilha.  
-O desafio é dividido em três níveis: **Novato**, **Aventureiro** e **Mestre**, cada um com mais complexidade e poder.
+Descrição do Projeto
 
+Este projeto consiste em uma implementação simplificada do clássico jogo de tabuleiro War, desenvolvida inteiramente em linguagem C. O objetivo principal foi aplicar e consolidar conceitos fundamentais da programação estruturada e do gerenciamento de estruturas de dados dinâmicas em um projeto prático e funcional.
 
-## 🎮 Nível Novato: Inventário Básico
+A analogia escolhida foi a de um campo de batalha virtual, em que dois jogadores, Azul e Verde, competem pelo domínio do mapa. A vitória é determinada por um sistema de missões estratégicas, sorteadas aleatoriamente no início de cada partida.
 
-### 🚩 Objetivo
+Funcionalidades Implementadas
 
-Criar um programa em C com as seguintes funcionalidades:
+Mapa Dinâmico:
+Criado em tempo de execução, representado por territórios com atributos de nome, cor do jogador dominante e quantidade de tropas.
 
-- Adicionar itens à mochila (**nome**, **tipo** e **quantidade**)
-- Remover itens pelo nome
-- Listar os itens cadastrados
+Sistema de Turnos:
+Execução alternada entre Jogador 1 (Azul) e Jogador 2 (Verde).
 
-### ⚙️ Funcionalidades
+Mecânica de Ataque:
+Jogadores podem atacar territórios inimigos a partir de territórios dominados. O resultado é definido por uma rolagem de dados simulada.
 
-- Utilização de `struct` para representar cada item
-- Vetor estático com capacidade para até **10 itens**
-- Leitura e escrita via terminal (`scanf`, `printf`)
-- Menu interativo com `switch` e `do-while`
+Conquista de Territórios:
+Em caso de vitória, o território passa a ser controlado pelo jogador atacante.
 
-### 🧠 Simplicidade
+Missões Estratégicas:
+Cada jogador recebe uma missão secreta no início (ex.: “Conquistar o Continente Norte” ou “Eliminar todas as tropas Verdes”). A primeira missão concluída define o vencedor.
 
-- Sem ordenações, buscas especializadas ou uso de ponteiros
-- Ideal para praticar manipulação básica de estruturas e arrays
+Verificação de Vitória:
+Ao final de cada turno, o sistema verifica se algum jogador atingiu as condições de vitória.
 
-### 📥 Entrada
+Conceitos de Estrutura de Dados Aplicados
 
-O usuário escolhe ações no menu e preenche os dados dos itens conforme solicitado.
+Structs:
+Modelagem de territórios, armazenando múltiplas informações em um único tipo de dado estruturado.
 
-### 📤 Saída
+Modularização:
+O código foi dividido em funções específicas (inicializarMapa, atacar, verificarMissao, etc.), facilitando clareza, manutenção e reutilização.
 
-O programa exibe os dados organizados em formato de tabela, com nome, tipo e quantidade.
+Ponteiros:
 
+Manipulação direta de memória.
 
+Passagem de parâmetros por referência, permitindo que as funções alterem o estado global do jogo.
 
-## 🛡️ Nível Aventureiro: Mochila com Busca
+Alocação Dinâmica de Memória:
 
-### 🆕 Diferenças em relação ao Nível Novato
+Uso de malloc() para criar estruturas em tempo de execução.
 
-- Implementação de **busca sequencial** por nome
-- Novidade no menu: opção de **"Buscar item por nome"**
-- Exibição detalhada do item encontrado
+Liberação com free() para evitar memory leaks.
 
-### ⚙️ Funcionalidades
+Manipulação de Strings:
 
-- O usuário pode procurar qualquer item já inserido
-- Se encontrado, o programa exibe seus atributos
-- Caso contrário, exibe mensagem de erro amigável
+Funções da <string.h> como strcpy e strcmp foram utilizadas para gerenciar nomes de territórios, cores e descrições de missões.
 
-### 💡 Conceitos Adicionados
+Geração de Números Aleatórios:
 
-- **Busca sequencial**
-- **Comparação de strings** (`strcmp`)
-- **Controle com flag** para indicar se item foi encontrado
+Implementação com srand() e rand() para:
 
-### 📥 Entrada
+Sorteio das missões.
 
-O usuário digita o nome do item que deseja buscar.
+Simulação da rolagem de dados nos combates.
 
-### 📤 Saída
+Conclusão
 
-- Detalhes completos do item (nome, tipo, quantidade)
-- Ou uma mensagem de erro, se não for encontrado
+O desenvolvimento deste projeto permitiu unir teoria e prática em um sistema lúdico, mas com fundamentos sólidos de Estruturas de Dados em C. A implementação trouxe experiência real no uso de structs, ponteiros, memória dinâmica, modularização, strings e geração de aleatoriedade, além de estimular a organização lógica e estratégica do código.
 
----
-
-## 🧠 Nível Mestre: Ordenação e Busca Binária
-
-### 🆕 Diferenças em relação ao Nível Aventureiro
-
-- Adição do campo **prioridade** aos itens (valores de 1 a 5)
-- Possibilidade de **ordenar** a mochila por **nome**, **tipo** ou **prioridade**
-- Implementação da **busca binária** por nome com verificação de ordenação
-
-### ⚙️ Funcionalidades
-
-- **Menu de ordenação**: o jogador escolhe o critério desejado
-- Contador de **comparações na ordenação** para análise de desempenho
-- **Busca binária** com validação de pré-requisito (lista deve estar ordenada por nome)
-
-### 💡 Conceitos Adicionados
-
-- **Enumeração** (`enum`) para critérios de ordenação
-- **Ordenação com Insertion Sort**
-- **Busca binária** (`binary search`)
-- Uso de **bool** para controle de estado
-- **Análise de desempenho** com contador de comparações
-
-### 📥 Entrada
-
-O usuário:
-
-1. Adiciona itens com prioridade
-2. Ordena os itens
-3. Realiza busca binária pelo nome do item
-
-### 📤 Saída
-
-- Mochila **ordenada** com base no critério escolhido
-- Exibição dos **dados do item buscado** ou mensagem de erro
-- **Quantidade de comparações** realizadas durante a ordenação
-
-
-
-## 🏁 Conclusão
-
-Ao completar qualquer nível do **Desafio Código da Ilha – Edição Free Fire**, você terá avançado significativamente na programação em **C**, desenvolvendo habilidades práticas de:
-
-- Manipulação de **estruturas e arrays**
-- Criação de **menus interativos**
-- Implementação de **buscas e ordenações**
-- **Pensamento modular** e boas práticas de software
-
-Cada nível representa uma missão rumo à **sobrevivência total**.  
-Escolha seu nível, prepare sua mochila... e **boa sorte na ilha!** 🏝️💼🔍
-
-> Equipe de Ensino – MateCheck
+Assim, o jogo War em C não foi apenas um exercício criativo, mas também um meio eficiente para compreender e consolidar conceitos essenciais da disciplina.
